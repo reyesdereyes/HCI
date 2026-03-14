@@ -1,0 +1,323 @@
+/* ============================================
+   ADMIN CLIENTES VIEW
+   ============================================ */
+
+.clientes-view {
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.clientes-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-tipo {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-tipo .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tipo .filter-btn .count {
+  background: var(--gray-200);
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.filter-tipo .filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-cyan);
+}
+
+.filter-tipo .filter-btn.active {
+  background: linear-gradient(135deg, var(--primary-dark), var(--accent-cyan));
+  border-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.filter-tipo .filter-btn.active .count {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.cliente-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cliente-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent-cyan);
+}
+
+.cliente-card-header {
+  background: linear-gradient(135deg, var(--gray-50), var(--white));
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.cliente-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-dark), var(--accent-cyan));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.cliente-info-header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cliente-info-header h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.cliente-empresa {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.tipo-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  margin-top: 0.25rem;
+}
+
+.tipo-mayor {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.tipo-detal {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.cliente-card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cliente-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+.contact-item svg {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.cliente-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--gray-50);
+  border-radius: 0.75rem;
+}
+
+.stat-item-small {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-item-small svg {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.stat-item-small > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.descuento-badge {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cliente-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.cliente-card-footer {
+  padding: 1rem 1.5rem;
+  background: var(--gray-50);
+  display: flex;
+  gap: 0.75rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.cliente-card-footer .action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cliente-card-footer .action-view {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.cliente-card-footer .action-view:hover {
+  background: #bfdbfe;
+  transform: translateY(-2px);
+}
+
+.cliente-card-footer .action-edit {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.cliente-card-footer .action-edit:hover {
+  background: #ddd6fe;
+  transform: translateY(-2px);
+}
+
+.empty-clientes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: var(--gray-400);
+}
+
+.empty-clientes svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-clientes p {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .clientes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cliente-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cliente-info-header {
+    align-items: center;
+  }
+
+  .cliente-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .cliente-card-footer {
+    flex-direction: column;
+  }
+}

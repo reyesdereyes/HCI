@@ -1,0 +1,353 @@
+.orders-layout {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.orders-content {
+  flex: 1;
+  margin-left: 280px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.orders-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a237e 0%, #00bcd4 100%);
+  color: white;
+}
+
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.orders-header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1a237e;
+  margin: 0 0 0.5rem 0;
+}
+
+.orders-header p {
+  font-size: 1.125rem;
+  color: #666;
+  margin: 0;
+}
+
+.orders-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-mini-order {
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.stat-mini-order:hover {
+  border-color: #00bcd4;
+  transform: translateY(-3px);
+}
+
+.stat-mini-order svg {
+  color: #00bcd4;
+}
+
+.stat-mini-order .stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1a237e;
+}
+
+.stat-mini-order .stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.orders-container {
+  max-width: 1400px;
+}
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+.order-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  border-color: #00bcd4;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.order-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  color: #1a237e;
+  font-size: 1.125rem;
+}
+
+.order-number svg {
+  color: #00bcd4;
+}
+
+.order-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-card-body {
+  margin-bottom: 1.5rem;
+}
+
+.order-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.order-info-row svg {
+  color: #00bcd4;
+  flex-shrink: 0;
+}
+
+.order-total {
+  font-weight: 900;
+  color: #1a237e;
+  font-size: 1.25rem;
+}
+
+.order-products {
+  margin-bottom: 1.5rem;
+}
+
+.products-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #666;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.product-tag {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.view-order-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a237e 0%, #00bcd4 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(26,35,126,0.3);
+}
+
+.view-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26,35,126,0.4);
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.empty-orders svg {
+  color: #00bcd4;
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+
+.empty-orders h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a237e;
+  margin: 0 0 0.75rem 0;
+}
+
+.empty-orders p {
+  font-size: 1.125rem;
+  color: #666;
+  margin: 0 0 2rem 0;
+}
+
+.shop-now-btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1a237e 0%, #00bcd4 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(26,35,126,0.3);
+}
+
+@media (max-width: 968px) {
+  .orders-content {
+    margin-left: 0;
+  }
+
+  .orders-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .orders-stats {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .stat-mini-order {
+    width: 100%;
+  }
+
+  .orders-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Spinner de carga */
+.orders-loading .spinner {
+  animation: spin 1s linear infinite;
+  color: #1a237e;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Animaciones suaves para tarjetas */
+.order-card {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Notas del pedido */
+.order-notes {
+  padding: 0.75rem;
+  background: #f3f4f6;
+  border-radius: 6px;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.order-notes p {
+  margin: 0;
+}
+
+/* Tag "más productos" */
+.product-tag.more {
+  background: #e5e7eb;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* Botón de actualizar */
+.refresh-btn {
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #1a237e 0%, #00bcd4 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(26,35,126,0.3);
+}
+
+.refresh-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26,35,126,0.4);
+}
+
+.refresh-btn:active {
+  transform: translateY(0);
+}
