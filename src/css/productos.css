@@ -210,6 +210,24 @@
     position: static;
     padding: 1.5rem;
   }
+  
+  .sidebar-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+  
+  .category-filter {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
 
   .productos-toolbar {
     flex-direction: column;
@@ -246,11 +264,26 @@
 
   .productos-sidebar {
     padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .sidebar-section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.625rem;
+    text-align: center;
+    color: #1a237e;
   }
 
   .category-filter {
     padding: 0.875rem 1rem;
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
+    margin-bottom: 0.625rem;
+    border-radius: 10px;
+  }
+  
+  .category-filter span {
+    font-size: 1.25rem;
   }
 
   .productos-toolbar {
@@ -286,6 +319,24 @@
 
   .productos-sidebar {
     padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .sidebar-section h3 {
+    font-size: 1rem;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .category-filter {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+  }
+  
+  .category-filter span {
+    font-size: 1.125rem;
   }
 
   .productos-toolbar {

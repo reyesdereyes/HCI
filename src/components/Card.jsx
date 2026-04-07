@@ -38,12 +38,6 @@ const Card = ({ product }) => {
             e.target.src = PLACEHOLDER_IMAGE;
           }}
         />
-        {product.stock < 10 && product.stock > 0 && (
-          <span className="stock-badge low">¡Últimas {product.stock} unidades!</span>
-        )}
-        {product.stock === 0 && (
-          <span className="stock-badge out">Agotado</span>
-        )}
       </div>
 
       {/* Info */}
