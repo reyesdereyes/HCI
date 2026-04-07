@@ -22,9 +22,7 @@ const Header = () => {
   const { getCartCount } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedZone, setSelectedZone] = useState('Carabobo');
-  const [selectedCurrency, setSelectedCurrency] = useState('USD');
   const [showZoneDropdown, setShowZoneDropdown] = useState(false);
-  const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showCarrito, setShowCarrito] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,18 +39,12 @@ const Header = () => {
   }, []);
 
   const zones = ['Carabobo', 'Caracas', 'Maracaibo', 'Valencia', 'Maracay', 'Barquisimeto', 'Maturín'];
-  const currencies = [
-    { code: 'USD', name: 'Dólar', symbol: '$' },
-    { code: 'VES', name: 'Bolívar', symbol: 'Bs.' },
-    { code: 'EUR', name: 'Euro', symbol: '€' }
-  ];
 
   // Cerrar dropdowns al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest('.dropdown-container')) {
         setShowZoneDropdown(false);
-        setShowCurrencyDropdown(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -80,9 +72,12 @@ const Header = () => {
             </span>
           </div>
           <div className="top-bar-right">
+            <span className="top-bar-item currency-notice">
+              <DollarSign size={16} />
+              <span>💵 Todos los precios en DÓLARES ($) - Pagos solo en USD</span>
+            </span>
             <a href="#" className="top-bar-link">Seguir mi pedido</a>
             <a href="#" className="top-bar-link">Ayuda</a>
-            <a href="#" className="top-bar-link">Venta al Mayor</a>
           </div>
         </div>
       </div>
@@ -180,41 +175,6 @@ const Header = () => {
                 )}
               </div>
 
-              {/* Currency Dropdown */}
-              <div className="dropdown-container">
-                <button 
-                  onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
-                  className="dropdown-trigger"
-                >
-                  <DollarSign className="dropdown-icon" />
-                  <div className="dropdown-label">
-                    <span className="dropdown-subtitle">Moneda</span>
-                    <span className="dropdown-value">
-                      {selectedCurrency} <ChevronRight size={14} className="chevron-icon rotate-90" />
-                    </span>
-                  </div>
-                </button>
-
-                {showCurrencyDropdown && (
-                  <div className="dropdown-menu currency-menu">
-                    <div className="dropdown-header">Selecciona moneda</div>
-                    {currencies.map((curr) => (
-                      <button
-                        key={curr.code}
-                        onClick={() => { setSelectedCurrency(curr.code); setShowCurrencyDropdown(false); }}
-                        className={`dropdown-item ${selectedCurrency === curr.code ? 'active' : ''}`}
-                      >
-                        <span className="currency-symbol">{curr.symbol}</span>
-                        <div className="currency-info">
-                          <span className="currency-code">{curr.code}</span>
-                          <span className="currency-name">{curr.name}</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
               {/* Cart */}
               <button className="cart-button" onClick={() => setShowCarrito(true)}>
                 <div className="cart-icon-wrapper">
@@ -243,6 +203,14 @@ const Header = () => {
         <div className="nav-container">
           <div className="nav-wrapper">
             
+            {/* Banner de moneda flotante */}
+            <div className="currency-banner">
+              <DollarSign size={20} />
+              <span className="currency-banner-text">
+                <strong>💵 PRECIOS EN DÓLARES</strong> - Aceptamos pagos únicamente en USD
+              </span>
+            </div>
+
             {/* Links rápidos */}
             <div className="nav-links">
               <a href="/" className="nav-link">Inicio</a>
@@ -267,12 +235,11 @@ const Header = () => {
       </nav>
 
       {/* Overlays */}
-      {(showZoneDropdown || showCurrencyDropdown) && (
+      {showZoneDropdown && (
         <div 
           className="dropdown-overlay" 
           onClick={() => { 
-            setShowZoneDropdown(false); 
-            setShowCurrencyDropdown(false); 
+            setShowZoneDropdown(false);
           }} 
         />
       )}
