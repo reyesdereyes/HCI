@@ -29,6 +29,7 @@ const Header = () => {
   const [showCarrito, setShowCarrito] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   // Detectar scroll para efectos
   useEffect(() => {
@@ -110,11 +111,11 @@ const Header = () => {
             </div>
 
             {/* Search */}
-            <div className={`search-container ${searchFocused ? 'focused' : ''}`}>
+            <div className={`search-container ${searchFocused ? 'focused' : ''} ${showMobileSearch ? 'mobile-search-open' : ''}`}>
               <div className="search-wrapper">
                 <input
                   type="text"
-                  placeholder="¿Qué necesitas para tu proyecto? Busca cerámica, pintura, herramientas..."
+                  placeholder="¿Qué necesitas para tu proyecto?"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setSearchFocused(true)}
@@ -137,6 +138,15 @@ const Header = () => {
 
             {/* Actions */}
             <div className="header-actions">
+
+              {/* Mobile Search Button */}
+              <button 
+                className="mobile-search-btn action-btn"
+                onClick={() => setShowMobileSearch(!showMobileSearch)}
+                title="Buscar"
+              >
+                <Search size={20} />
+              </button>
 
               {/* Zone Dropdown */}
               <div className="dropdown-container">
@@ -265,6 +275,44 @@ const Header = () => {
             setShowCurrencyDropdown(false); 
           }} 
         />
+      )}
+
+      {/* Mobile Menu */}
+      {showMobileMenu && (
+        <div className="mobile-menu open">
+          <div className="mobile-menu-header">
+            <span>Menú</span>
+            <button onClick={() => setShowMobileMenu(false)}>
+              <X size={24} />
+            </button>
+          </div>
+          
+          <div className="mobile-menu-content">
+            {/* Navigation Links */}
+            <div className="mobile-nav-links">
+              <a href="/" className="mobile-nav-link" onClick={() => setShowMobileMenu(false)}>
+                <span>🏠</span>
+                Inicio
+              </a>
+              <a href="/productos" className="mobile-nav-link" onClick={() => setShowMobileMenu(false)}>
+                <span>📦</span>
+                Productos
+              </a>
+              <a href="/equipo" className="mobile-nav-link" onClick={() => setShowMobileMenu(false)}>
+                <span>👥</span>
+                Equipo
+              </a>
+              <a href="/contacto" className="mobile-nav-link" onClick={() => setShowMobileMenu(false)}>
+                <span>📞</span>
+                Contacto
+              </a>
+              <a href="/ofertas" className="mobile-nav-link highlight" onClick={() => setShowMobileMenu(false)}>
+                <Percent size={18} />
+                Ofertas Especiales
+              </a>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Carrito Sidebar */}
