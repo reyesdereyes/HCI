@@ -4,7 +4,6 @@ import { useCart } from '../context/CartContext';
 import Carrito from './Carrito';
 import { 
   Search, 
-  User, 
   MapPin, 
   DollarSign, 
   ShoppingCart, 
@@ -138,16 +137,6 @@ const Header = () => {
 
             {/* Actions */}
             <div className="header-actions">
-
-              <div className="auth-group" style={{ cursor: 'pointer' }}>
-                <User className="auth-icon" />
-                <div className="auth-buttons">
-                  <span className="auth-greeting">¡Hola!</span>
-                  <div className="auth-links">
-                    <button className="auth-btn bold" onClick={() => navigate('/login')}>Iniciar Sesión</button>
-                  </div>
-                </div>
-              </div>
 
               {/* Zone Dropdown */}
               <div className="dropdown-container">

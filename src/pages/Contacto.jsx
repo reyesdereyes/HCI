@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle, CheckCircle } from 'lucide-react';
 import '../css/contacto.css';
 
 const Contacto = () => {
@@ -12,17 +12,64 @@ const Contacto = () => {
     asunto: '',
     mensaje: ''
   });
+  const [errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear error when user starts typing
+    if (errors[e.target.name]) {
+      setErrors({
+        ...errors,
+        [e.target.name]: ''
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = 'El nombre es requerido';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'El correo es requerido';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Correo inválido';
+    }
+    
+    if (!formData.telefono.trim()) {
+      newErrors.telefono = 'El teléfono es requerido';
+    }
+    
+    if (!formData.asunto.trim()) {
+      newErrors.asunto = 'El asunto es requerido';
+    }
+    
+    if (!formData.mensaje.trim()) {
+      newErrors.mensaje = 'El mensaje es requerido';
+    }
+    
+    return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Mensaje enviado! Nos pondremos en contacto pronto.');
+    
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    
+    // Show success message
+    setShowSuccess(true);
+    
+    // Reset form
     setFormData({
       nombre: '',
       email: '',
@@ -30,12 +77,32 @@ const Contacto = () => {
       asunto: '',
       mensaje: ''
     });
+    
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 5000);
+  };
+
+  const handleWhatsApp = () => {
+    const message = encodeURIComponent('Hola! Me gustaría obtener más información sobre sus productos.');
+    window.open(`https://wa.me/584129876543?text=${message}`, '_blank');
   };
 
   return (
     <>
       <Header />
       <main className="contacto-page">
+        {showSuccess && (
+          <div className="success-notification">
+            <CheckCircle size={24} />
+            <div>
+              <strong>¡Mensaje enviado exitosamente!</strong>
+              <p>Nos pondremos en contacto contigo pronto.</p>
+            </div>
+          </div>
+        )}
+
         <div className="contacto-hero">
           <h1>¿Necesitas Ayuda?</h1>
           <p>Estamos aquí para asesorarte en tu proyecto de decoración</p>
@@ -55,6 +122,17 @@ const Contacto = () => {
                   <h3>Teléfonos</h3>
                   <p>+58 241-123-4567</p>
                   <p>+58 412-987-6543</p>
+                </div>
+              </div>
+
+              <div className="info-item whatsapp-item" onClick={handleWhatsApp}>
+                <div className="info-icon whatsapp-icon">
+                  <MessageCircle size={24} />
+                </div>
+                <div>
+                  <h3>WhatsApp</h3>
+                  <p>Chatea con nosotros ahora</p>
+                  <p className="whatsapp-cta">Click para abrir chat →</p>
                 </div>
               </div>
 
@@ -105,8 +183,10 @@ const Contacto = () => {
                   value={formData.nombre}
                   onChange={handleChange}
                   placeholder="Ej: Juan Pérez"
+                  className={errors.nombre ? 'error' : ''}
                   required
                 />
+                {errors.nombre && <span className="error-message">{errors.nombre}</span>}
               </div>
 
               <div className="form-row">
@@ -119,8 +199,10 @@ const Contacto = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="tu@email.com"
+                    className={errors.email ? 'error' : ''}
                     required
                   />
+                  {errors.email && <span className="error-message">{errors.email}</span>}
                 </div>
 
                 <div className="form-group">
@@ -132,8 +214,10 @@ const Contacto = () => {
                     value={formData.telefono}
                     onChange={handleChange}
                     placeholder="0412-1234567"
+                    className={errors.telefono ? 'error' : ''}
                     required
                   />
+                  {errors.telefono && <span className="error-message">{errors.telefono}</span>}
                 </div>
               </div>
 
@@ -146,8 +230,10 @@ const Contacto = () => {
                   value={formData.asunto}
                   onChange={handleChange}
                   placeholder="¿En qué podemos ayudarte?"
+                  className={errors.asunto ? 'error' : ''}
                   required
                 />
+                {errors.asunto && <span className="error-message">{errors.asunto}</span>}
               </div>
 
               <div className="form-group">
@@ -159,8 +245,10 @@ const Contacto = () => {
                   value={formData.mensaje}
                   onChange={handleChange}
                   placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                  className={errors.mensaje ? 'error' : ''}
                   required
                 ></textarea>
+                {errors.mensaje && <span className="error-message">{errors.mensaje}</span>}
               </div>
 
               <button type="submit" className="submit-btn">

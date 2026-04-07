@@ -1,6 +1,54 @@
 .contacto-page {
   min-height: 100vh;
   background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+}
+
+.success-notification {
+  position: fixed;
+  top: 100px;
+  right: 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+  animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-out 4.5s forwards;
+  max-width: 400px;
+}
+
+.success-notification strong {
+  display: block;
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.success-notification p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(400px);
+  }
 }
 
 .contacto-hero {
@@ -163,6 +211,33 @@
   transform: scaleY(1);
 }
 
+.whatsapp-item {
+  cursor: pointer;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  border-color: #4caf50;
+}
+
+.whatsapp-item:hover {
+  background: linear-gradient(135deg, #c8e6c9 0%, #dcedc8 100%);
+  transform: translateX(10px) scale(1.02);
+}
+
+.whatsapp-icon {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4) !important;
+}
+
+.whatsapp-item:hover .whatsapp-icon {
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6) !important;
+}
+
+.whatsapp-cta {
+  color: #25d366 !important;
+  font-weight: 700 !important;
+  margin-top: 0.5rem !important;
+  font-size: 0.95rem !important;
+}
+
 .info-icon {
   width: 64px;
   height: 64px;
@@ -259,6 +334,35 @@
   background: white;
   box-shadow: 0 0 0 5px rgba(0, 188, 212, 0.1);
   transform: translateY(-2px);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.form-group input.error:focus,
+.form-group textarea.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: -0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 .form-group textarea {
@@ -385,5 +489,20 @@
 
   .contacto-map {
     padding: 0 1rem 4rem;
+  }
+
+  .success-notification {
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .success-notification strong {
+    font-size: 1rem;
+  }
+
+  .success-notification p {
+    font-size: 0.875rem;
   }
 }

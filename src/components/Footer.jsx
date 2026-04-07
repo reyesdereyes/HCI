@@ -6,7 +6,6 @@ import '../css/footer.css';
 const Footer = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [clickCount, setClickCount] = useState(0);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -14,26 +13,11 @@ const Footer = () => {
     setEmail('');
   };
 
-  // Función para acceder al admin (5 clicks en el logo)
-  const handleAdminAccess = () => {
-    setClickCount(prev => prev + 1);
-    
-    if (clickCount + 1 === 5) {
-      navigate('/admin');
-      setClickCount(0);
-    }
-    
-    // Reset después de 3 segundos
-    setTimeout(() => {
-      setClickCount(0);
-    }, 3000);
-  };
-
   const footerLinks = {
-    'Sobre Nosotros': ['Quiénes somos', 'Nuestra historia', 'Trabaja con nosotros', 'Prensa', 'Blog'],
-    'Atención al Cliente': ['Centro de ayuda', 'Preguntas frecuentes', 'Términos y condiciones', 'Política de privacidad'],
-    'Vendedores': ['Conviértete en vendedor', 'Portal de vendedores', 'Tarifas y comisiones'],
-    'Categorías': ['Farmacia', 'Tecnología', 'Hogar', 'Moda', 'Supermercado']
+    'Sobre Nosotros': ['Quiénes somos', 'Nuestra historia', 'Trabaja con nosotros', 'Responsabilidad social'],
+    'Atención al Cliente': ['Centro de ayuda', 'Preguntas frecuentes', 'Términos y condiciones', 'Política de privacidad', 'Garantías'],
+    'Servicios': ['Cotizaciones', 'Asesoría técnica', 'Envíos a nivel nacional', 'Instalación'],
+    'Categorías': ['Construcción', 'Refrigeración', 'Decoración', 'Herramientas', 'Acabados']
   };
 
   const paymentMethods = ['Visa', 'Mastercard', 'Amex', 'PayPal', 'Pago Móvil', 'Zelle'];
@@ -116,29 +100,6 @@ const Footer = () => {
               <a href="#" className="social-link"><Twitter className="social-icon" /></a>
               <a href="#" className="social-link"><Linkedin className="social-icon" /></a>
             </div>
-
-            {/* Botón Admin */}
-            <button 
-              className="admin-access-btn"
-              onClick={() => navigate('/admin')}
-              style={{
-                marginTop: '1.5rem',
-                padding: '0.75rem 1.5rem',
-                background: 'linear-gradient(135deg, #1a237e 0%, #00bcd4 100%)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                width: '100%'
-              }}
-              onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
-              onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
-            >
-              🔐 Acceso Administrador
-            </button>
           </div>
 
           {/* Links Columns */}
